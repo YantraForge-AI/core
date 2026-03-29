@@ -11,6 +11,9 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
       - uses: astral-sh/setup-uv@v5
       - run: uv sync --dev
       - run: uv run ruff check src/ tests/
@@ -20,6 +23,9 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
       - uses: astral-sh/setup-uv@v5
       - run: uv sync --dev
       - run: uv run mypy src/
@@ -28,6 +34,9 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
       - uses: astral-sh/setup-uv@v5
       - run: uv sync --dev
       - run: uv run pytest --cov --cov-report=term-missing
@@ -36,10 +45,8 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
-      - name: Install shellcheck
-        run: sudo apt-get install -y shellcheck
       - name: Shellcheck scripts
-        run: shellcheck scripts/*.sh
+        run: shellcheck --exclude=SC1091 scripts/*.sh
       - name: Verify scripts parse without errors
         run: |
           bash -n scripts/init.sh

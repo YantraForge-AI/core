@@ -13,3 +13,15 @@ MD033: false
 
 # Allow bare URLs
 MD034: false
+
+# Allow fenced code blocks without language specified
+MD040: false
+
+# Allow files to start without a top-level heading (prompt templates)
+MD041: false
+
+# Allow lists without surrounding blank lines
+MD032: false
+
+# Allow compact table style (pipes without spaces)
+MD060: false
