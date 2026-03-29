@@ -1,11 +1,47 @@
+# Secrets
 .env
+
+# Runtime data
 data/events/
 data/snapshots/
 data/metrics/
+
+# Node
 node_modules/
+
+# Paperclip
 .paperclip/
+
+# Logs
 *.log
+
+# OS
 .DS_Store
+Thumbs.db
+
+# Python
 __pycache__/
-*.pyc
+*.py[cod]
+*.egg-info/
+dist/
+build/
+.eggs/
 .venv/
+venv/
+
+# Testing
+.coverage
+htmlcov/
+.pytest_cache/
+
+# Type checking
+.mypy_cache/
+
+# Linting
+.ruff_cache/
+
+# IDE
+.idea/
+.vscode/
+*.swp
+*.swo
