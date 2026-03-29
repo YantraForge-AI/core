@@ -1,0 +1,11 @@
+.env
+data/events/
+data/snapshots/
+data/metrics/
+node_modules/
+.paperclip/
+*.log
+.DS_Store
+__pycache__/
+*.pyc
+.venv/

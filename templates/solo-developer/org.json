@@ -1,0 +1,121 @@
+{
+  "name": "YantraForge",
+  "description": "8-agent starter org for solo developer dogfooding",
+  "north_star": "Build and ship AI-powered products with an 8-agent autonomous org, scaling as pain demands",
+  "budget_monthly_cents": 30000,
+  "agents": [
+    {
+      "name": "COO",
+      "role": "COO",
+      "adapter": "hermes_local",
+      "manager": null,
+      "budget_cents": 3000,
+      "prompt": "prompts/coo.md",
+      "memory": "persistent",
+      "heartbeat_cron": "*/60 * * * *",
+      "callbacks": ["task_assigned", "ceo_directive"]
+    },
+    {
+      "name": "CTO",
+      "role": "CTO",
+      "adapter": "claude_local",
+      "manager": "COO",
+      "budget_cents": 4000,
+      "prompt": "prompts/cto.md",
+      "memory": "para",
+      "heartbeat_cron": "*/120 * * * *",
+      "callbacks": ["task_assigned", "ceo_directive"]
+    },
+    {
+      "name": "CMO",
+      "role": "CMO",
+      "adapter": "claude_local",
+      "manager": "COO",
+      "budget_cents": 2500,
+      "prompt": "prompts/cmo.md",
+      "memory": "para",
+      "heartbeat_cron": "*/120 * * * *",
+      "callbacks": ["task_assigned", "ceo_directive"]
+    },
+    {
+      "name": "Engineering Lead",
+      "role": "Team Lead",
+      "adapter": "claude_local",
+      "manager": "CTO",
+      "budget_cents": 3500,
+      "prompt": "prompts/engineering-lead.md",
+      "memory": "para",
+      "heartbeat_cron": "*/30 * * * *",
+      "callbacks": ["task_assigned", "qa_blocked"]
+    },
+    {
+      "name": "Research Lead",
+      "role": "Team Lead",
+      "adapter": "claude_local",
+      "manager": "CTO",
+      "budget_cents": 2500,
+      "prompt": "prompts/research-lead.md",
+      "memory": "para",
+      "heartbeat_cron": "*/60 * * * *",
+      "callbacks": ["task_assigned"]
+    },
+    {
+      "name": "Backend Engineer",
+      "role": "IC",
+      "adapter": "claude_local",
+      "manager": "Engineering Lead",
+      "budget_cents": 3500,
+      "prompt": "prompts/backend-engineer.md",
+      "memory": "stateless",
+      "heartbeat_cron": "*/30 * * * *",
+      "callbacks": ["task_assigned"]
+    },
+    {
+      "name": "QA Engineer",
+      "role": "IC",
+      "adapter": "claude_local",
+      "manager": "Engineering Lead",
+      "budget_cents": 3000,
+      "prompt": "prompts/qa-engineer.md",
+      "memory": "stateless",
+      "heartbeat_cron": "*/30 * * * *",
+      "callbacks": ["task_assigned"]
+    },
+    {
+      "name": "Academic Researcher",
+      "role": "IC",
+      "adapter": "claude_local",
+      "manager": "Research Lead",
+      "budget_cents": 2000,
+      "prompt": "prompts/academic-researcher.md",
+      "memory": "stateless",
+      "heartbeat_cron": "*/240 * * * *",
+      "callbacks": ["task_assigned"]
+    },
+    {
+      "name": "Technical Writer",
+      "role": "IC",
+      "adapter": "claude_local",
+      "manager": "CMO",
+      "budget_cents": 2000,
+      "prompt": "prompts/technical-writer.md",
+      "memory": "stateless",
+      "heartbeat_cron": "*/240 * * * *",
+      "callbacks": ["task_assigned"]
+    }
+  ],
+  "platform_constraints": {
+    "agent_concurrency": 1,
+    "agent_hiring_gate": true,
+    "budget_increases_gate": true,
+    "default_heartbeat_prompts": "disabled",
+    "ops_project": "YantraForge Ops"
+  },
+  "task_sizing": {
+    "XS": 1,
+    "S": 2,
+    "M": 5,
+    "L": 8,
+    "XL": 13
+  }
+}
