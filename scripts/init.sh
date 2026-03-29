@@ -257,7 +257,7 @@ fi
 
 # Agent name→ID map stored as a temp file (bash 3.x compatible)
 AGENT_MAP_FILE=$(mktemp)
-trap "rm -f $AGENT_MAP_FILE" EXIT
+trap 'rm -f "$AGENT_MAP_FILE"' EXIT
 echo "$EXISTING_AGENTS" | jq -r '.[] | "\(.name)\t\(.id)"' > "$AGENT_MAP_FILE" 2>/dev/null || true
 
 agent_id_for() {
