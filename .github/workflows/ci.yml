@@ -15,7 +15,7 @@ jobs:
         with:
           python-version: '3.12'
       - uses: astral-sh/setup-uv@v5
-      - run: uv sync --dev
+      - run: uv sync --extra dev
       - run: uv run ruff check src/ tests/
       - run: uv run ruff format --check src/ tests/
 
@@ -27,7 +27,7 @@ jobs:
         with:
           python-version: '3.12'
       - uses: astral-sh/setup-uv@v5
-      - run: uv sync --dev
+      - run: uv sync --extra dev
       - run: uv run mypy src/
 
   test:
@@ -38,7 +38,7 @@ jobs:
         with:
           python-version: '3.12'
       - uses: astral-sh/setup-uv@v5
-      - run: uv sync --dev
+      - run: uv sync --extra dev
       - run: uv run pytest --cov --cov-report=term-missing
 
   lint-shell:
