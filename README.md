@@ -1,5 +1,7 @@
 # YantraForge Core
 
+[![CI](https://github.com/YantraForge-AI/core/actions/workflows/ci.yml/badge.svg)](https://github.com/YantraForge-AI/core/actions/workflows/ci.yml)
+
 > Plug-and-play AI org-in-a-box built on [Paperclip](https://github.com/paperclipai/paperclip).
 
 YantraForge provides org templates, principles-based agent prompts, and a COO-as-interface pattern that lets a single human run a multi-agent development organization.
