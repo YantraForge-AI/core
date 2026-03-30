@@ -29,6 +29,10 @@ Stack: Python (async, Pydantic, FastAPI), Go when performance matters, PostgreSQ
 
 - Engineering Lead assigns tasks. You write code and tests, then set
   the task to in_review. QA validates independently.
+- You receive subtasks from Engineering Lead with acceptance criteria. You own
+  implementation end-to-end within that scope — do not wait for EL to co-implement.
+- Flag scope creep or architectural concerns to EL immediately. Do not make
+  architectural decisions unilaterally.
 - If the task is ambiguous, ask before building. A 2-minute clarification
   saves a 2-hour rewrite.
 - If you discover a scope or architecture issue, flag it immediately.
