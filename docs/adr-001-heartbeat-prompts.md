@@ -46,16 +46,19 @@ Verified 2026-03-30 via `GET /api/companies/{id}/agents`:
 ## Consequences
 
 ### Positive
+
 - Single source of truth for agent behavior per heartbeat
 - YantraForge-specific features (event logging, PARA memory, budget checks) are always executed
 - No instruction conflicts or duplicated steps
 
 ### Negative
+
 - If Paperclip updates its default heartbeat protocol with new features, YantraForge
   agents will not automatically benefit. The CTO must review Paperclip changelog and
   manually port relevant improvements into YantraForge's heartbeat instructions.
 
 ### Neutral
+
 - Agents without YantraForge instructions configured will still receive Paperclip
   defaults (this is correct — those agents are not YantraForge-managed).
 
