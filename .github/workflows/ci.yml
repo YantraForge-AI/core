@@ -72,4 +72,4 @@ jobs:
           python-version: '3.12'
       - run: pip install detect-secrets
       - name: Audit secrets baseline
-        run: detect-secrets scan --baseline .secrets.baseline && detect-secrets audit --report --baseline .secrets.baseline
+        run: detect-secrets scan --baseline .secrets.baseline && detect-secrets audit --report .secrets.baseline
