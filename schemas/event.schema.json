@@ -1,0 +1,101 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://yantraforge.dev/schemas/event.schema.json",
+  "title": "YantraForge Event",
+  "description": "Structured event envelope for YantraForge logging. One JSON object per line in data/events/YYYY-MM-DD.jsonl.",
+  "type": "object",
+  "required": ["event_id", "timestamp", "event_type", "agent_id", "agent_role"],
+  "properties": {
+    "event_id": {
+      "type": "string",
+      "format": "uuid",
+      "description": "Unique identifier for this event."
+    },
+    "timestamp": {
+      "type": "string",
+      "format": "date-time",
+      "description": "ISO-8601 UTC timestamp when the event was created."
+    },
+    "event_type": {
+      "type": "string",
+      "enum": [
+        "task_started",
+        "task_completed",
+        "task_blocked",
+        "review_submitted",
+        "review_overridden",
+        "escalation_created",
+        "escalation_resolved",
+        "cross_team_handoff",
+        "cross_team_completed",
+        "heartbeat_skip",
+        "heartbeat_executed",
+        "qa_test_result",
+        "prompt_updated",
+        "budget_alert",
+        "infra_event",
+        "knowledge_extracted"
+      ],
+      "description": "The type of event. Determines the shape of metadata."
+    },
+    "agent_id": {
+      "type": "string",
+      "description": "ID of the agent that emitted the event."
+    },
+    "agent_role": {
+      "type": "string",
+      "description": "Role of the emitting agent (cto, engineering_lead, etc.)."
+    },
+    "team": {
+      "type": "string",
+      "default": "",
+      "description": "Team the agent belongs to."
+    },
+    "cxo": {
+      "type": "string",
+      "default": "",
+      "description": "CxO responsible for this agent's team."
+    },
+    "task_id": {
+      "type": "string",
+      "default": "",
+      "description": "Task/issue ID this event relates to."
+    },
+    "engagement": {
+      "type": "string",
+      "default": "",
+      "description": "Engagement or project context."
+    },
+    "prompt_version": {
+      "type": "string",
+      "default": "",
+      "description": "Git SHA of the prompt file used during this event."
+    },
+    "model_id": {
+      "type": "string",
+      "default": "",
+      "description": "LLM model identifier used."
+    },
+    "duration_seconds": {
+      "type": "number",
+      "default": 0,
+      "description": "Duration of the operation in seconds."
+    },
+    "token_usage": {
+      "type": "object",
+      "properties": {
+        "input": { "type": "integer" },
+        "output": { "type": "integer" },
+        "cost_cents": { "type": "number" }
+      },
+      "required": ["input", "output", "cost_cents"],
+      "description": "Token consumption for this event."
+    },
+    "metadata": {
+      "type": "object",
+      "description": "Event-type-specific payload. Shape varies by event_type.",
+      "additionalProperties": true
+    }
+  },
+  "additionalProperties": false
+}
